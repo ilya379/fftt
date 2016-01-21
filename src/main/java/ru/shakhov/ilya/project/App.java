@@ -32,8 +32,6 @@ public class App extends Application {
     private Stage stage;
 
     public static void main(String[] args) {
-        Map<App, Integer> m = new HashMap<>();
-        m.put()
             launch(args);
     }
 
