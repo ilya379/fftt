@@ -21,7 +21,7 @@ public class LineChartSample {
     }
 
     public Parent getNode() {
-        System.out.println(data.length);
+        //System.out.println(data.length);
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Number of Month");

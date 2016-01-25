@@ -18,7 +18,7 @@ public class BarChartSample {
     }
 
     public Parent getNode() {
-        System.out.println(data.length);
+        //System.out.println(data.length);
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String,Number> bc =
