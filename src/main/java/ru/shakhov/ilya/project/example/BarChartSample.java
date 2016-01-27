@@ -23,19 +23,17 @@ public class BarChartSample {
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String,Number> bc =
                 new BarChart<>(xAxis,yAxis);
-        bc.setTitle("Country Summary");
-        xAxis.setLabel("Country");
-        yAxis.setLabel("Value");
+        bc.setTitle("FFT");
+        xAxis.setLabel("frequency");
+        yAxis.setLabel("Amplitude");
 
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("real");
-        for (int i = 0; i<data.length; i++) {
-            series1.getData().add(new XYChart.Data(String.valueOf(i), data[i].getReal()));
-        }
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("imaginary");
-        for (int i = 0; i<data.length; i++) {
-            series2.getData().add(new XYChart.Data(String.valueOf(i), data[i].getImaginary()));
+        for (int i = 0; i<data.length/2+1; i++) {
+            series1.getData().add(new XYChart.Data(String.valueOf(i), i==0?data[i].getReal():data[i].getReal()*2));
+            series2.getData().add(new XYChart.Data(String.valueOf(i),  i==0?data[i].getImaginary():data[i].getImaginary()*2));
         }
         bc.getData().addAll(series1, series2);
         return bc;

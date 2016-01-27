@@ -11,10 +11,10 @@ import org.apache.commons.math3.complex.Complex;
 
 
 public class LineChartSample {
-    private Double[] data;
-    private Double[] x;
+    private double[] data;
+    private double[] x;
 
-    public LineChartSample(Double[] x, Double[] y) {
+    public LineChartSample(double[] x, double[] y) {
         data = y;
         this.x = x;
 
@@ -24,21 +24,22 @@ public class LineChartSample {
         //System.out.println(data.length);
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Number of Month");
+        xAxis.setLabel("x");
         //creating the chart
         final LineChart<Number,Number> lineChart =
                 new LineChart<Number,Number>(xAxis,yAxis);
 
-        lineChart.setTitle("Stock Monitoring, 2010");
+        lineChart.setTitle("chart");
         //defining a series
         XYChart.Series series = new XYChart.Series();
-        series.setName("My portfolio");
+        series.setName("function");
         //populating the series with data
         for (int i=0; i< data.length; i++) {
+            //System.out.print(data[i] + " ");
             series.getData().add(new XYChart.Data(x[i], data[i]));
         }
 
-
+        System.out.println();
         lineChart.getData().add(series);
         return lineChart;
     }

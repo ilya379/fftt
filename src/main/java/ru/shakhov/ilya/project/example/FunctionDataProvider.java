@@ -7,21 +7,22 @@ import java.util.function.Function;
  */
 public class FunctionDataProvider implements DataProvider{
     private final Function<Double, Double> function;
-    private Double[] xData = new Double[0];
+    private double[] xData = new double[0];
     public FunctionDataProvider(Function<Double, Double> function) {
         this.function = function;
     }
 
-    public void setXData(Double[] data) {
+    public void setXData(double[] data) {
         xData = data;
     }
 
 
 
     @Override
-    public Double[] getData() {
-        Double[] result = new Double[xData.length];
+    public double[] getData() {
+        double[] result = new double[xData.length];
         for (int i = 0; i<xData.length; i++) {
+            //result[i] = i<xData.length-4?function.apply(xData[i]):0;
             result[i] = function.apply(xData[i]);
         }
         return result;

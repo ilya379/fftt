@@ -35,23 +35,19 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        stage.setTitle("Bar Chart Sample");
+        stage.setTitle("FFT");
 
         FastFourierTransformer transformer = new FastFourierTransformer(DftNormalization.STANDARD);
-        FunctionDataProvider dataProvider = new FunctionDataProvider(aDouble -> cos(0.35 * aDouble)+ 0.8*cos(0.01 * aDouble)+1);
-        Double[] x = PointDataGenerator.getData(0.0,2*PI, new Double(pow(2.0,8.0)).intValue());
-                /*new Double[] {0.0, Math.PI/15, 2*Math.PI/15, 3*Math.PI/15, 4*Math.PI/15, 5*Math.PI/15, 6*Math.PI/15, 7*Math.PI/15, 8*Math.PI/15, 9*Math.PI/15,
-                10*Math.PI/15, 11*Math.PI/15, 12*Math.PI/15, 13*Math.PI/15, 14*Math.PI/15, 15*Math.PI/15};*/
-        System.out.println();
-        double[] xprim = new double[x.length];
-        for(int i = 0; i<x.length; i++) {
-            xprim[i] = x[i].doubleValue();
-            System.out.print(xprim[i]+" ");
-        }
+        FunctionDataProvider dataProvider = new FunctionDataProvider(aDouble -> 230*sin(aDouble)+130*cos(5*aDouble)+1);
+        double[] x = PointDataGenerator.getData(0.0+2, 2 * PI+2, new Double(pow(2.0, 5.0)).intValue());
         dataProvider.setXData(x);
+        double[] y = dataProvider.getData();
 
-        LineChartSample lineChartSample = new LineChartSample(x,dataProvider.getData());
-        BarChartSample barChartSample = new BarChartSample(transformer.transform(xprim, FORWARD));
+        System.out.println();
+
+
+        LineChartSample lineChartSample = new LineChartSample(x,y);
+        BarChartSample barChartSample = new BarChartSample(transformer.transform(y, FORWARD));
 
 
         Scene scene  = new Scene(lineChartSample.getNode(),800,600);
